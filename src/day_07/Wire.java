@@ -38,6 +38,10 @@ public class Wire implements Comparable<Wire> {
     void setSignal(int signal) {
         this.signal = new Int16bit(signal);
     }
+	
+	void reset(){
+		this.signal = null;
+	}
 
     @Override
     public String toString() {

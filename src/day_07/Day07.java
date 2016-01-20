@@ -16,9 +16,12 @@ import java.nio.file.Paths;
 public class Day07 implements Day {
 
 	static final String DAY_PATH = "day_07";
-	static final String INPUT_FILE = "input.txt";
+	// input for the first star: input01.txt
+	// input for the first star: input02.txt
+	static final String INPUT_FILE = "input02.txt";
 
-	@Override // 23753, 956, 14146, 31185, 29904, 14742?
+	// 40149 - the right answer for the second star after adding line "956 -> b" to input02.txt
+	@Override 
 	public void run() throws Exception {
 		Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE).toRealPath(LinkOption.NOFOLLOW_LINKS);
 		Circuit circuit = new Circuit();
@@ -30,22 +33,11 @@ public class Day07 implements Day {
 			while ((line = reader.readLine()) != null) {
 				lineParser = new LineParser(line, circuit);
 				lineParser.parse();
-//                circuit.run();
-			}
-			for (int j = 0; j < 100; j++) {
-				circuit.run();
 			}
 
-//            circuit.reset();
-//            for (int j = 0; j < 100; j++) {
-//                for (int i = 0; i < 10; i++) {
-//                    circuit.run();
-//                    System.out.println(i + ".");
-//                    circuit.printWires();
-//                }
-//            }
-			circuit.printWires();
-			circuit.printGates();
+			circuit.run();
+			circuit.printWires(w -> true);
+			
 		} catch (IOException x) {
 			System.err.format("IOException: %s%n", x);
 		}

@@ -1,8 +1,9 @@
 package day_07;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  *
@@ -34,6 +35,7 @@ class Circuit {
 		gates.add(gate);
 	}
 
+//	Optional<Wire> getWire(String name) {
 	Wire getWire(String name) {
 		for (Wire wire : wires) {
 			if (wire.getName().equals(name)) {
@@ -41,58 +43,57 @@ class Circuit {
 			}
 		}
 		return null;
+//		return wires.stream()
+//				.filter(w -> w.getName().equals(name))
+//				.findFirst();
 	}
 
 	void reset() {
-		for (Wire wire : wires) {
-			if (wire.getName().matches("[^b]")) {
-				wire.setSignal(null);
-			}
-		}
+		wires.stream().forEach(resetter);
 	}
 
+	private static final Consumer<Wire> resetter = (Wire wire) -> {
+		if (wire.getName().equals("b")) {
+			wire.setSignal(956);
+		} else {
+			wire.setSignal(null);
+		}
+	};
+
+//	private static Consumer<Wire> resetter = new Consumer<Wire>() {
+//		@Override
+//		public void accept(Wire wire) {
+//			if (wire.getName().equals("b")){
+//				wire.setSignal(956);
+//			} else {
+//				wire.setSignal(null);
+//			}
+//		}
+//	};
 	void run() {
-		for (Wire wire : wires) {
-			if (wire.getSignal() == null) {
-				for (Gate gate : gates) {
-					gate.run();
-				}
-			}
+		while (wires.stream()
+				.filter(w -> w.getSignal() == null)
+				.count() != 0) {
+			gates.stream()
+					.filter(g -> !g.alreadyRun())
+					.filter(g -> g.readyToRun())
+					.map(g -> g.run())
+					.forEach(g -> {
+					});
 		}
-//        boolean allRun = false;
-//
-//        while (allRun == false) {
-//            // go through all gates that are ready to run
-//            for (Gate gate : gates) {
-//                if (gate.readyToRun() && !gate.alreadyRun()) {
-//                    gate.run();
-//                }
-//            }
-//            
-//            // presume all gates have already run
-//            allRun = true;
-//            
-//            // check if all gates have actually run
-//            for (Gate gate : gates){
-//                if (!gate.alreadyRun()){
-//                    allRun = false;
-//                }
-//            }
-//        }
 	}
 
-	void printWires() {
-		Collections.sort(wires);
-		for (Wire wire : wires) {
-			System.out.println(wire.toString());
-		}
-//        System.out.println(wires.get(0));
+	void printWires(Predicate<Wire> predicate) {
+		wires.stream()
+				.sorted()
+				.filter(predicate)
+				.forEach(w -> System.out.println(w));
 	}
 
-	void printGates() {
-		for (Gate gate : gates) {
-			System.out.println(gate.toString());
-		}
+	void printGates(Predicate<Gate> predicate) {
+		gates.stream()
+				.filter(predicate)
+				.forEach(g -> System.out.println(g));
 	}
 
 }
