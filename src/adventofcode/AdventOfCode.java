@@ -1,6 +1,6 @@
 package adventofcode;
 
-import day_07.Day07;
+import day_08.Day08;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +14,7 @@ public class AdventOfCode {
 
     public static void main(String[] args) {
         try {
-            Day day = new Day07();
+            Day day = new Day08();
             day.run();
         } catch (Exception ex) {
             Logger.getLogger(AdventOfCode.class.getName()).log(Level.SEVERE, null, ex);
