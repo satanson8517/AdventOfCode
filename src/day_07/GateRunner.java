@@ -46,16 +46,11 @@ class GateRunner {
         }
 
         if (!secondOperand.isNumber()) {
-//            secondInputWire = circuit.getWire(secondOperand.value);
             secondInputWire = circuit.getWire(secondOperand.value).orElseGet(
                     () -> {
                         circuit.addWire(secondOperand.value);
                         return circuit.getWire(secondOperand.value).get();
                     });
-//            if (secondInputWire == null) {
-//                circuit.addWire(secondOperand.value);
-//                secondInputWire = circuit.getWire(secondOperand.value);
-//            }
         }
 
         // parse and initialize output wire
@@ -64,10 +59,6 @@ class GateRunner {
                     circuit.addWire(output.value);
                     return circuit.getWire(output.value).get();
                 });
-//        if (outputWire == null) {
-//            circuit.addWire(output.value);
-//            outputWire = circuit.getWire(output.value);
-//        }
 
         // create gate
         Gate gate;
