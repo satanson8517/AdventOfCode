@@ -1,5 +1,7 @@
 package day_07;
 
+import java.util.Optional;
+
 /**
  *
  * @author Michal Nedbálek <michal.nedbalek@avg.com> on 17/12/2015
@@ -17,11 +19,13 @@ class SignalProcessor {
     }
 
     void sendSignal() {
-        Wire outputWire = circuit.getWire(output.value);
+//        Wire outputWire = circuit.getWire(output.value);
+        Optional<Wire> outputWire = circuit.getWire(output.value);
 
         // left side is a number
         if (input.isNumber()) {
             int signal = input.toInt();
+			
             if (outputWire != null) {
                 outputWire.setSignal(signal);
             } else {

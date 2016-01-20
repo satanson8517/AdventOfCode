@@ -2,6 +2,7 @@ package day_07;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -35,17 +36,17 @@ class Circuit {
 		gates.add(gate);
 	}
 
-//	Optional<Wire> getWire(String name) {
-	Wire getWire(String name) {
-		for (Wire wire : wires) {
-			if (wire.getName().equals(name)) {
-				return wire;
-			}
-		}
-		return null;
-//		return wires.stream()
-//				.filter(w -> w.getName().equals(name))
-//				.findFirst();
+	Optional<Wire> getWire(String name) {
+//	Wire getWire(String name) {
+//		for (Wire wire : wires) {
+//			if (wire.getName().equals(name)) {
+//				return wire;
+//			}
+//		}
+//		return null;
+		return wires.stream()
+				.filter(w -> w.getName().equals(name))
+				.findFirst();
 	}
 
 	void reset() {

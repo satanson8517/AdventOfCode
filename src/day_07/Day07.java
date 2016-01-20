@@ -27,7 +27,6 @@ public class Day07 implements Day {
 		Circuit circuit = new Circuit();
 		try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
 			String line;
-			int lineNumber = 0;
 			LineParser lineParser;
 
 			while ((line = reader.readLine()) != null) {
@@ -36,7 +35,7 @@ public class Day07 implements Day {
 			}
 
 			circuit.run();
-			circuit.printWires(w -> true);
+			circuit.printWires(w -> true); // print all lines
 			
 		} catch (IOException x) {
 			System.err.format("IOException: %s%n", x);
