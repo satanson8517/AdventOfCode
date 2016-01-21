@@ -13,7 +13,8 @@ import java.nio.file.Paths;
  * @author Michal Nedbálek
  */
 public class Day09 implements Day {
-        static final String DAY_PATH = "day_09";
+
+    static final String DAY_PATH = "day_09";
     static final String INPUT_FILE = "input.txt";
 
     @Override
