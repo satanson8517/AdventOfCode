@@ -4,7 +4,7 @@ package day_08;
  *
  * @author Michal Nedbálek
  */
-public class LineParser {
+class LineParser {
 
     private String line;
     private int memChars = 0;

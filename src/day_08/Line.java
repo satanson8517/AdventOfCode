@@ -4,7 +4,7 @@ package day_08;
  *
  * @author Michal Nedbálek
  */
-public class Line {
+class Line {
     
     final String line;
     final int memChars;  
