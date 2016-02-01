@@ -40,7 +40,7 @@ public class Day09 implements Day {
 			System.out.println("Minimal distance: " + graph.getMinPath());
 			System.out.println("Maximal distance: " + graph.getMaxPath());
 			
-			System.out.println(new Date().getTime() - start.getTime());
+			System.out.println("Total time elapsed: " + (new Date().getTime() - start.getTime()));
 			
         } catch (Exception ex) {
 			ex.printStackTrace(System.out);
