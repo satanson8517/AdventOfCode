@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 
 /**
  *
@@ -22,8 +23,11 @@ public class Day09 implements Day {
     public void run() throws IOException {
         Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE).toRealPath(LinkOption.NOFOLLOW_LINKS);
         try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
+			Date start = new Date();
+			
             String line;
-			Graph graph = new Graph();
+			Graph graph = new ListGraph();
+//			Graph graph = new ArrayGraph();
 			Edge edge;
             while ((line = reader.readLine()) != null) {
 				edge = new ParseLine(line).parse();
@@ -35,6 +39,8 @@ public class Day09 implements Day {
 			
 			System.out.println("Minimal distance: " + graph.getMinPath());
 			System.out.println("Maximal distance: " + graph.getMaxPath());
+			
+			System.out.println(new Date().getTime() - start.getTime());
 			
         } catch (Exception ex) {
 			ex.printStackTrace(System.out);
