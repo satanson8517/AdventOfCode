@@ -1,7 +1,10 @@
 package day_09;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
 
 /**
@@ -12,14 +15,15 @@ public class Graph {
 
 	final List<String> nodes = new ArrayList<>();
 	final List<Edge> edges = new ArrayList<>();
+	final Set<PathVariant> allPerms = new HashSet<>();
 
 	void addEdge(Edge edge) {
 		edges.add(edge);
 	}
 
 	void addNode(Edge edge) {
-		addNodeF.accept(edge.from);
-		addNodeF.accept(edge.to);
+		addNodeF.accept(edge.getFrom());
+		addNodeF.accept(edge.getTo());
 	}
 
 	/**
@@ -32,14 +36,88 @@ public class Graph {
 	};
 
 	List<String> getNodes() {
-		nodes.stream().forEach(edge -> System.out.println(edge));
+		nodes.stream().sorted().forEach(node -> System.out.println(node));
 		return nodes;
 	}
 
-	List<Edge> minPath() {
-		// sort all edges by their length - lowest to highest
-		edges.stream().sorted().forEach(edge -> System.out.println(edge));
-		return edges;
+	void initFinished() {
+		permutation(nodes, 0, nodes.size() - 1);
+		evaluateEdges();
+	}
+
+	void evaluateEdges() {
+		for (PathVariant pv : allPerms) {
+			pv.computeTotal(this);
+		}
+	}
+	
+	PathVariant getMaxPath(){
+		Integer max = 0;
+		PathVariant maxPv = null;
+		
+		for (PathVariant pv : allPerms){
+			if (pv.getTotal() > max){
+				max = pv.getTotal();
+				maxPv = pv;
+			}
+		}
+		
+		return maxPv;
+	}
+	
+	PathVariant getMinPath(){
+		Integer min = Integer.MAX_VALUE;
+		PathVariant minPv = null;
+		
+		for (PathVariant pv : allPerms){
+			if (pv.getTotal() < min){
+				min = pv.getTotal();
+				minPv = pv;
+			}
+		}
+		
+		return minPv;
+	}
+
+	Edge searchEdge(String from, String to) {
+		// try to find the edge
+		for (Edge edge : edges) {
+			if (edge.getFrom().equals(from) && edge.getTo().equals(to)) {
+				return edge;
+			}
+		}
+		
+		// if not edge found try to swap from-to values
+		for (Edge edge : edges) {
+			if (edge.getFrom().equals(to) && edge.getTo().equals(from)) {
+				return edge;
+			}
+		}
+		
+		throw new IllegalArgumentException("Edge not found: from: "
+				+ from + "; to: " + to + " !!!");
+	}
+
+	private void permutation(List<String> nodes, int begin, int end) {
+		if (begin == end) {
+			List<String> listCopy = new LinkedList<>();
+			listCopy.addAll(nodes);
+			PathVariant pv = new PathVariant(listCopy);
+			allPerms.add(pv);
+		} else {
+			for (int i = begin; i <= end; i++) {
+				swap(nodes, i, begin);
+				permutation(nodes, begin + 1, end);
+				swap(nodes, i, begin);
+			}
+		}
+	}
+
+	private void swap(List<String> nodes, int first, int second) {
+		String aux = nodes.get(first);
+		nodes.set(first, nodes.get(second));
+		nodes.set(second, aux);
+
 	}
 
 }

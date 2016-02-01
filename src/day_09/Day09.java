@@ -30,9 +30,12 @@ public class Day09 implements Day {
 				graph.addEdge(edge);
 				graph.addNode(edge);
             }
-			graph.minPath();
-			graph.getNodes();
 
+			graph.initFinished();
+			
+			System.out.println("Minimal distance: " + graph.getMinPath());
+			System.out.println("Maximal distance: " + graph.getMaxPath());
+			
         } catch (Exception ex) {
 			ex.printStackTrace(System.out);
         }
