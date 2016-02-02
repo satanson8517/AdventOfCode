@@ -22,7 +22,7 @@ public class Day10 implements Day {
 //		System.out.println(output);
 	}
 
-	private static String translate(String input) {
+	private String translate(String input) {
 		final char[] inputArr = input.toCharArray();
 		StringBuilder output = new StringBuilder();
 
