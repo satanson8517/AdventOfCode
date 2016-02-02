@@ -1,6 +1,6 @@
 package adventofcode;
 
-import day_11.Day11;
+import day_12.Day12;
 
 /**
  *
@@ -12,7 +12,7 @@ public class AdventOfCode {
 
     public static void main(String[] args) {
         try {
-            Day day = new Day11();
+            Day day = new Day12();
             day.run();
         } catch (Exception ex) {
             ex.printStackTrace(System.out);
