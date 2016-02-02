@@ -25,7 +25,6 @@ public class Day12 implements Day {
 		Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE).toRealPath(LinkOption.NOFOLLOW_LINKS);
 		try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
 //			System.out.println(count(reader));
-			
 			String jsonString = reader.readLine().replaceAll("\"red\"", "");
 			System.out.println(jsonString.length());
 			
