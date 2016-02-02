@@ -34,8 +34,8 @@ public class Day10 implements Day {
 		for (int i = 1; i < inputArr.length; i++) {
 			if (inputArr[i] != c) {
 				output.append(count).append(c);
-				count = 1;
 				c = inputArr[i];
+				count = 1;
 			} else {
 				count++;
 			}

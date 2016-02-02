@@ -26,8 +26,8 @@ public class Day09 implements Day {
 			Date start = new Date();
 			
             String line;
-			Graph graph = new ListGraph();
-//			Graph graph = new ArrayGraph();
+//			Graph graph = new ListGraph();
+			Graph graph = new ArrayGraph();
 			Edge edge;
             while ((line = reader.readLine()) != null) {
 				edge = new ParseLine(line).parse();
