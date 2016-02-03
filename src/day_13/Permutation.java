@@ -55,7 +55,20 @@ class Permutation implements Comparable{
 		List<String> firstPerm = new LinkedList<>();
 
 		Day13.names.stream().forEach(name -> firstPerm.add(name));
-		permutation(firstPerm, 0, firstPerm.size() - 1);
+		
+		// it is much faster to fix the first name and make permutations from the rest
+		// otherwise there would be unnecessarily plenty of them
+		permutation(firstPerm, 1, firstPerm.size() - 1);
+	}
+	
+	static int getMax(){
+		int max = 0;
+		for (Permutation perm : Day13.allPerms) {
+			if (perm.happiness > max){
+				max = perm.happiness;
+			}
+		}
+		return max;
 	}
 
 	private static void permutation(

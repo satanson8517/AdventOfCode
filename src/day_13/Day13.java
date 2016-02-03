@@ -32,7 +32,8 @@ public class Day13 implements Day {
 			names = getAllNames();
 			Permutation.getAllPerms();
 
-			allPerms.stream().sorted().forEach(perm -> System.out.println(perm));
+//			allPerms.stream().sorted().forEach(perm -> System.out.println(perm));
+			System.out.println(Permutation.getMax());
 		} catch (Exception ex) {
 			ex.printStackTrace(System.out);
 		}
