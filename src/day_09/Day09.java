@@ -16,34 +16,34 @@ import java.util.Date;
  */
 public class Day09 implements Day {
 
-    static final String DAY_PATH = "day_09";
-    static final String INPUT_FILE = "input.txt";
+	static final String DAY_PATH = "day_09";
+	static final String INPUT_FILE = "input.txt";
 
-    @Override
-    public void run() throws IOException {
-        Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE).toRealPath(LinkOption.NOFOLLOW_LINKS);
-        try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
+	@Override
+	public void run() throws IOException {
+		Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE).toRealPath(LinkOption.NOFOLLOW_LINKS);
+		try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
 			Date start = new Date();
-			
-            String line;
+
+			String line;
 //			Graph graph = new ListGraph();
 			Graph graph = new ArrayGraph();
 			Edge edge;
-            while ((line = reader.readLine()) != null) {
+			while ((line = reader.readLine()) != null) {
 				edge = new ParseLine(line).parse();
 				graph.addEdge(edge);
 				graph.addNode(edge);
-            }
+			}
 
 			graph.initFinished();
-			
+
 			System.out.println("Minimal distance: " + graph.getMinPath());
 			System.out.println("Maximal distance: " + graph.getMaxPath());
-			
+
 			System.out.println("Total time elapsed: " + (new Date().getTime() - start.getTime()));
-			
-        } catch (Exception ex) {
+
+		} catch (Exception ex) {
 			ex.printStackTrace(System.out);
-        }
-    }
+		}
+	}
 }

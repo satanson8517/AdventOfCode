@@ -10,15 +10,15 @@ import java.security.NoSuchAlgorithmException;
  */
 class MD5Encoder {
 
-    static String encode(String input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        byte[] encodedBytes = md.digest(input.getBytes());
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < encodedBytes.length; i++) {
-            sb.append(Integer.toHexString((encodedBytes[i] & 0xFF) | 0x100).substring(1, 3));
-        }
-        return sb.toString();
-    }
+	static String encode(String input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		byte[] encodedBytes = md.digest(input.getBytes());
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < encodedBytes.length; i++) {
+			sb.append(Integer.toHexString((encodedBytes[i] & 0xFF) | 0x100).substring(1, 3));
+		}
+		return sb.toString();
+	}
 
     // TESTING
 //    public static void main(String[] args) {

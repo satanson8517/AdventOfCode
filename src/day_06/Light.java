@@ -6,23 +6,23 @@ package day_06;
  */
 class Light {
 
-    private int brightness = 0;
+	private int brightness = 0;
 
-    Light() {
-    }
+	Light() {
+	}
 
-    int getBrightness() {
-        return brightness;
-    }
+	int getBrightness() {
+		return brightness;
+	}
 
-    void increaseBrightness() {
-        brightness++;
-    }
+	void increaseBrightness() {
+		brightness++;
+	}
 
-    void decreaseBrightness() {
-        if (brightness > 0) {
-            brightness--;
-        }
-    }
+	void decreaseBrightness() {
+		if (brightness > 0) {
+			brightness--;
+		}
+	}
 
 }

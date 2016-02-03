@@ -51,18 +51,18 @@ public class ListGraph extends Graph {
 	void evaluateEdges() {
 		for (ListPathVariant pv : allPerms) {
 			pv.computeTotal(this);
-			
+
 //			System.out.println(pv);
 		}
 	}
 
 	@Override
-	ListPathVariant getMaxPath(){
+	ListPathVariant getMaxPath() {
 		Integer max = 0;
 		ListPathVariant maxPv = null;
 
-		for (ListPathVariant pv : allPerms){
-			if (pv.getTotal() > max){
+		for (ListPathVariant pv : allPerms) {
+			if (pv.getTotal() > max) {
 				max = pv.getTotal();
 				maxPv = pv;
 			}
@@ -72,12 +72,12 @@ public class ListGraph extends Graph {
 	}
 
 	@Override
-	ListPathVariant getMinPath(){
+	ListPathVariant getMinPath() {
 		Integer min = Integer.MAX_VALUE;
 		ListPathVariant minPv = null;
 
-		for (ListPathVariant pv : allPerms){
-			if (pv.getTotal() < min){
+		for (ListPathVariant pv : allPerms) {
+			if (pv.getTotal() < min) {
 				min = pv.getTotal();
 				minPv = pv;
 			}
@@ -112,7 +112,7 @@ public class ListGraph extends Graph {
 			listCopy.addAll(nodes);
 			ListPathVariant pv = new ListPathVariant(listCopy);
 			allPerms.add(pv);
-			
+
 //			System.out.println(pv);
 		} else {
 			for (int i = begin; i <= end; i++) {

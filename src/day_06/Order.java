@@ -6,40 +6,40 @@ package day_06;
  */
 class Order {
 
-    private Verb verb;
-    private Position min;
-    private Position max;
+	private Verb verb;
+	private Position min;
+	private Position max;
 
-    Order() {
-    }
+	Order() {
+	}
 
-    Verb getVerb() {
-        return verb;
-    }
+	Verb getVerb() {
+		return verb;
+	}
 
-    void setVerb(Verb verb) {
-        this.verb = verb;
-    }
+	void setVerb(Verb verb) {
+		this.verb = verb;
+	}
 
-    Position getMin() {
-        return min;
-    }
+	Position getMin() {
+		return min;
+	}
 
-    void setMin(Position min) {
-        this.min = min;
-    }
+	void setMin(Position min) {
+		this.min = min;
+	}
 
-    Position getMax() {
-        return max;
-    }
+	Position getMax() {
+		return max;
+	}
 
-    void setMax(Position max) {
-        this.max = max;
-    }
+	void setMax(Position max) {
+		this.max = max;
+	}
 
-    @Override
-    public String toString() {
-        return "Order{" + "verb=" + verb + ", min=" + min + ", max=" + max + '}';
-    }
-    
+	@Override
+	public String toString() {
+		return "Order{" + "verb=" + verb + ", min=" + min + ", max=" + max + '}';
+	}
+
 }

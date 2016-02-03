@@ -6,5 +6,5 @@ package adventofcode;
  */
 public interface Day {
 
-    public void run() throws Exception;
+	public void run() throws Exception;
 }

@@ -48,5 +48,5 @@ class Edge implements Comparable {
 	public String getTo() {
 		return to;
 	}
-	
+
 }

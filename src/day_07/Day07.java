@@ -21,7 +21,7 @@ public class Day07 implements Day {
 	static final String INPUT_FILE = "input02.txt";
 
 	// 40149 - the right answer for the second star after adding line "956 -> b" to input02.txt
-	@Override 
+	@Override
 	public void run() throws Exception {
 		Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE).toRealPath(LinkOption.NOFOLLOW_LINKS);
 		Circuit circuit = new Circuit();
@@ -36,7 +36,7 @@ public class Day07 implements Day {
 
 			circuit.run();
 			circuit.printWires(w -> true); // print all lines
-			
+
 		} catch (IOException x) {
 			System.err.format("IOException: %s%n", x);
 		}

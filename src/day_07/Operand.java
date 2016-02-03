@@ -6,18 +6,18 @@ package day_07;
  */
 class Operand {
 
-    final String value;
+	final String value;
 
-    public Operand(String value) {
-        this.value = value;
-    }
+	public Operand(String value) {
+		this.value = value;
+	}
 
-    boolean isNumber() {
-        return value.matches("\\d*");
-    }
-    
-    int toInt(){
-        return Integer.parseInt(value);
-    }
-    
+	boolean isNumber() {
+		return value.matches("\\d*");
+	}
+
+	int toInt() {
+		return Integer.parseInt(value);
+	}
+
 }

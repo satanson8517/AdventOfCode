@@ -6,38 +6,38 @@ package day_06;
  */
 class Position {
 
-    private int x;
-    private int y;
+	private int x;
+	private int y;
 
-    Position(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-    
-    Position(String x, String y) {
-        this.x = Integer.parseInt(x);
-        this.y = Integer.parseInt(y);
-    }
+	Position(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 
-    int getX() {
-        return x;
-    }
+	Position(String x, String y) {
+		this.x = Integer.parseInt(x);
+		this.y = Integer.parseInt(y);
+	}
 
-    void setX(int x) {
-        this.x = x;
-    }
+	int getX() {
+		return x;
+	}
 
-    int getY() {
-        return y;
-    }
+	void setX(int x) {
+		this.x = x;
+	}
 
-    void setY(int y) {
-        this.y = y;
-    }
+	int getY() {
+		return y;
+	}
 
-    @Override
-    public String toString() {
-        return "Position{" + "x=" + x + ", y=" + y + '}';
-    }
-    
+	void setY(int y) {
+		this.y = y;
+	}
+
+	@Override
+	public String toString() {
+		return "Position{" + "x=" + x + ", y=" + y + '}';
+	}
+
 }

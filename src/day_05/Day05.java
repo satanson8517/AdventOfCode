@@ -15,30 +15,30 @@ import java.nio.file.Paths;
  */
 public class Day05 implements Day {
 
-    static final String DAY_PATH = "day_05";
-    static final String INPUT_FILE = "input.txt";
+	static final String DAY_PATH = "day_05";
+	static final String INPUT_FILE = "input.txt";
 
-    @Override
-    public void run() throws Exception {
-        Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE).toRealPath(LinkOption.NOFOLLOW_LINKS);
-        try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
-            String line;
-            int niceLines = 0;
-            while ((line = reader.readLine()) != null) {
-                if (isNice(line)){
-                    niceLines++;
-                }
-            }
-            System.out.println(niceLines);
-        } catch (IOException x) {
-            System.err.format("IOException: %s%n", x);
-        }
-    }
-    
-    private boolean isNice(String line){
-        return (line.matches(".*(\\w\\w).*\\1.*")
-                && line.matches(".*(\\w).\\1.*"));
-    }
+	@Override
+	public void run() throws Exception {
+		Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE).toRealPath(LinkOption.NOFOLLOW_LINKS);
+		try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
+			String line;
+			int niceLines = 0;
+			while ((line = reader.readLine()) != null) {
+				if (isNice(line)) {
+					niceLines++;
+				}
+			}
+			System.out.println(niceLines);
+		} catch (IOException x) {
+			System.err.format("IOException: %s%n", x);
+		}
+	}
+
+	private boolean isNice(String line) {
+		return (line.matches(".*(\\w\\w).*\\1.*")
+				&& line.matches(".*(\\w).\\1.*"));
+	}
 //    private boolean isNice(String line){
 //        return (line.matches(".*[aeiou].*[aeiou].*[aeiou].*")
 //                && line.matches(".*(\\w)\\1.*")

@@ -6,7 +6,7 @@ package day_06;
  */
 enum Verb {
 
-    TURN_ON,
-    TURN_OFF,
-    TOGGLE;
+	TURN_ON,
+	TURN_OFF,
+	TOGGLE;
 }

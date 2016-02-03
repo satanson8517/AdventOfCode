@@ -115,7 +115,7 @@ public class ArrayGraph extends Graph {
 
 			ArrayPathVariant pv = new ArrayPathVariant(arrCopy);
 			allPerms.add(pv);
-			
+
 //			System.out.println(pv);
 		} else {
 			for (int i = begin; i <= end; i++) {
