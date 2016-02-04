@@ -22,9 +22,17 @@ public class Day14 implements Day {
 		Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE)
 				.toRealPath(LinkOption.NOFOLLOW_LINKS);
 		try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
+			final int DISTANCE = 2503;
+			
+			LineParser parser;
+			Reindeer reindeer;
 			String line;
+			
+			System.out.println("Time: " + DISTANCE + "\n");
+			
 			while((line = reader.readLine()) != null){
-				System.out.println(line);
+				reindeer = new LineParser(line).parse();
+				System.out.println(reindeer.name + ": " + reindeer.distance(DISTANCE));
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace(System.out);
