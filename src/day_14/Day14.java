@@ -17,18 +17,17 @@ import java.util.Set;
 public class Day14 implements Day {
 
 	static final String DAY_PATH = "day_14";
-	static final String INPUT_FILE = "input_test.txt";
+	static final String INPUT_FILE = "input.txt";
 
 	@Override
 	public void run() throws Exception {
 		Path inputFile = Paths.get(AdventOfCode.VAR_PATH, DAY_PATH, INPUT_FILE)
 				.toRealPath(LinkOption.NOFOLLOW_LINKS);
 		try (BufferedReader reader = Files.newBufferedReader(inputFile)) {
-			final int TIME = 140;
+			final int TIME = 2503;
 			
 			Set<Reindeer> herd = new HashSet<>();
 			String line;
-			LineParser parser;
 			Reindeer reindeer;
 			
 			System.out.println("Time: " + TIME + "\n");
@@ -36,13 +35,11 @@ public class Day14 implements Day {
 			// initialize the herd
 			while((line = reader.readLine()) != null){
 				reindeer = new LineParser(line).parse();
-//				System.out.println(reindeer.name + ": " + reindeer.distance(DISTANCE));
 				herd.add(reindeer);
 			}
 			
 			PointCounter pc = new PointCounter(herd);
-			pc.getWinner(TIME);
-//			System.out.println(pc.getMax(TIME));
+			System.out.println(pc.getWinner(TIME));
 		} catch (Exception ex) {
 			ex.printStackTrace(System.out);
 		}

@@ -15,18 +15,24 @@ class PointCounter {
 		this.herd = herd;
 	}
 
-	void getWinner(int time) {
-		for (int i = 1; i <= time; i++) {
+	int getWinner(int time) {
+		int max = 0;
+		
+		for (int moment = 1; moment <= time; moment++) {
 			// add points to winners
-			Set<Reindeer> winners = getMax(time);
+			Set<Reindeer> winners = getMax(moment);
 			winners.forEach(winner -> {
 				winner.addPoint();
 			});
 		}
 		
-		herd.forEach(r -> System.out.println(r));
+		for (Reindeer reindeer : herd) {
+			if (reindeer.getPoints() > max){
+				max = reindeer.getPoints();
+			}
+		}
 
-//		return;
+		return max;
 	}
 
 	/**
