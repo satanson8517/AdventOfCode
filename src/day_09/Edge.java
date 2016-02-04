@@ -4,7 +4,7 @@ package day_09;
  *
  * @author Michal Nedbálek <michal.nedbalek@avg.com> on 21/01/2016
  */
-class Edge implements Comparable {
+class Edge implements Comparable<Edge> {
 
 	private String from;
 	private String to;
@@ -25,8 +25,8 @@ class Edge implements Comparable {
 	}
 
 	@Override
-	public int compareTo(Object o) {
-		return this.from.compareTo(((Edge) o).from);
+	public int compareTo(Edge that) {
+		return this.from.compareTo(that.from);
 	}
 //	@Override
 //	public int compareTo(Object o) {

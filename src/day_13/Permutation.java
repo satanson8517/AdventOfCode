@@ -9,7 +9,7 @@ import java.util.Optional;
  *
  * @author Michal Nedbálek <michal.nedbalek@avg.com> on 03/02/2016
  */
-class Permutation implements Comparable{
+class Permutation implements Comparable<Permutation> {
 
 	final List<String> permutation;
 	final int happiness;
@@ -38,7 +38,7 @@ class Permutation implements Comparable{
 		sumHappiness += optRule.get().gainLose;
 		optRule = searchOrderElem(permutation.get(0), permutation.get(permutation.size() - 1));
 		sumHappiness += optRule.get().gainLose;
-		
+
 		return sumHappiness;
 	}
 
@@ -50,21 +50,21 @@ class Permutation implements Comparable{
 						&& rule.nextTo.equals(nextTo)))
 				.findFirst();
 	}
-	
+
 	static void getAllPerms() {
 		List<String> firstPerm = new LinkedList<>();
 
 		Day13.names.stream().forEach(name -> firstPerm.add(name));
-		
+
 		// it is much faster to fix the first name and make permutations from the rest
 		// otherwise there would be unnecessarily plenty of them
 		permutation(firstPerm, 1, firstPerm.size() - 1);
 	}
-	
-	static int getMax(){
+
+	static int getMax() {
 		int max = 0;
 		for (Permutation perm : Day13.allPerms) {
-			if (perm.happiness > max){
+			if (perm.happiness > max) {
 				max = perm.happiness;
 			}
 		}
@@ -87,7 +87,7 @@ class Permutation implements Comparable{
 			}
 		}
 	}
-	
+
 	private static void swap(List<String> nodes, int first, int second) {
 		String aux = nodes.get(first);
 		nodes.set(first, nodes.get(second));
@@ -100,8 +100,8 @@ class Permutation implements Comparable{
 	}
 
 	@Override
-	public int compareTo(Object o) {
-		return this.happiness - ((Permutation) o).happiness;
+	public int compareTo(Permutation that) {
+		return this.happiness - that.happiness;
 	}
-	
+
 }
