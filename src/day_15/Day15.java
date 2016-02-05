@@ -33,8 +33,9 @@ public class Day15 implements Day {
 			}
 
 			Combinations combs = new Combinations(ingreds);
-			combs.evaluate();
+//			combs.evaluate();
 //			Combinations.combosGen();
+            Combinations.testGen();
 
 		} catch (Exception ex) {
 			ex.printStackTrace(System.out);
